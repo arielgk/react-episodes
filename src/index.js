@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-
+import { Provider } from 'react-redux'
+ import Episodes from './components/Episodes/Episodes'
 import styles from './styles.css'
+import configureStore from './store/configureStore';
+import initialState from './store/initialState';
+
+
+const store = configureStore(initialState)
+
 
 export default class ExampleComponent extends Component {
   static propTypes = {
@@ -14,9 +21,10 @@ export default class ExampleComponent extends Component {
     } = this.props
 
     return (
-      <div className={styles.test}>
-        Example Component: {text}
-      </div>
+    <Provider store={store}>
+      <Episodes />
+    </Provider>
+     
     )
   }
 }

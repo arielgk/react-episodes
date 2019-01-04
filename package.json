@@ -57,5 +57,11 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
+    "redux-orm": "^0.12.1",
+    "redux-thunk": "^2.3.0"
+  }
 }
