@@ -12,7 +12,11 @@ Show.modelName = "Show";
 Show.fields = {
     id: attr(),
     title: attr(),
-    seasons:many("Season","show_id"),
+    description:attr(),
+    short_description:attr(),
+    
+    seasons: many("Season"),
+
 
 }
 
@@ -26,7 +30,7 @@ Season.modelName = "Season";
 
 Season.fields = {
     id: attr(),
-    episodes:many("Episode","season_id"),
+    episodes: many("Episode"),
 
 }
 
@@ -38,6 +42,6 @@ Episode.modelName = "Episode";
 Episode.fields = {
     id: attr(),
     title: attr(),
-    duration:attr(),
+    duration: attr(),
 }
 

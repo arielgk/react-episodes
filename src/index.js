@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
- import Episodes from './components/Episodes/Episodes'
+import Shows from './components/Shows/Shows'
 import styles from './styles.css'
 import configureStore from './store/configureStore';
 import initialState from './store/initialState';
@@ -21,10 +21,10 @@ export default class ExampleComponent extends Component {
     } = this.props
 
     return (
-    <Provider store={store}>
-      <Episodes />
-    </Provider>
-     
+      <Provider store={store}>
+        <Shows id="2"/>
+      </Provider>
+
     )
   }
 }

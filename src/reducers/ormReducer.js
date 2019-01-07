@@ -3,16 +3,32 @@ import * as actionTypes from '../actions/actionTypes';
 
 
 
-function ormReducer(dbState, action) {
-    const sess = orm.session(dbState);
+function ormReducer(state, action) {
+    const session = orm.session(state);
 
-    // Session specific models are available
-    // as properties on the Session instance.
-    const { Show, Season, Episode } = sess;
+
+    const { Show, Season, Episode } = session;
     switch (action.type) {
-        default:
-            return sess.state;
+        case actionTypes.CREATE_SHOW_SUCCESS:
+            Show.create(action.payload.res[0]);
+            break;
+
+        case actionTypes.GET_SHOW_SUCCESS:
+        console.log(action.payload.res.show);
+            Show.create(action.payload.res.show)
+            action.payload.res.seasons.map((i) => {
+                const season = Season.create(i);
+                Show.withId(action.payload.res.show.id).seasons.add(season);
+            })
+            action.payload.res.episodes.map((i) => {
+                const episode = Episode.create(i);
+                Season.withId(i.season_id).episodes.add(episode);
+            })
+            break;
+
     }
+    return session.state;
+
 
 }
 export default ormReducer

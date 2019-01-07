@@ -1,12 +1,11 @@
-import {combineReducers} from 'redux';
-// import ajaxCallInProgress from "./ajaxStatusReducer";
+import { combineReducers } from 'redux';
+import ajaxStatus from "./ajaxStatusReducer";
 import ormReducer from './ormReducer';
 
 const rootReducers = combineReducers({
-    // ajaxCallInProgress,
-
+    ajaxStatus,
     ormReducer,
-   
+
 });
 
 
